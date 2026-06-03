@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.*?>
+
+<VBox prefHeight="800.0" prefWidth="1200.0" spacing="10.0" style="-fx-padding: 10px; -fx-background-color: #ecf0f1;" xmlns:fx="http://javafx.com/fxml" fx:controller="com.gamesortir.ui.controller.LearnModeController">
+    
+    <!-- Top Bar -->
+    <HBox spacing="15.0" style="-fx-padding: 10px; -fx-background-color: white; -fx-border-color: #bdc3c7; -fx-border-radius: 5;">
+        <Button fx:id="backButton" onAction="#handleBackButton" text="← KEMBALI" style="-fx-font-size: 11px; -fx-padding: 8px 15px; -fx-background-color: #95a5a6; -fx-text-fill: white;"/>
+        <Label text="📚 Mode Belajar - Simulasi Sorting" style="-fx-font-size: 16px; -fx-font-weight: bold; -fx-text-fill: #2c3e50;"/>
+        <Spacer HBox.hgrow="ALWAYS"/>
+        <Label fx:id="scoreLabel" text="Skor: 0" style="-fx-font-size: 12px; -fx-padding: 5px 10px; -fx-background-color: #27ae60; -fx-text-fill: white; -fx-border-radius: 5;"/>
+        <Label fx:id="livesLabel" text="Nyawa: 3" style="-fx-font-size: 12px; -fx-padding: 5px 10px; -fx-background-color: #e74c3c; -fx-text-fill: white; -fx-border-radius: 5;"/>
+    </HBox>
+    
+    <!-- Main Content -->
+    <HBox spacing="10.0" VBox.vgrow="ALWAYS">
+        
+        <!-- Left Panel - Controls -->
+        <VBox spacing="10.0" style="-fx-padding: 10px; -fx-background-color: white; -fx-border-color: #bdc3c7; -fx-border-radius: 5;" minWidth="250">
+            <Label text="Pengaturan Algoritma" style="-fx-font-size: 12px; -fx-font-weight: bold;"/>
+            <ComboBox fx:id="algorithmComboBox" style="-fx-font-size: 11px;" prefWidth="200"/>
+            
+            <Separator/>
+            
+            <Label text="Input Array" style="-fx-font-size: 12px; -fx-font-weight: bold;"/>
+            <TextArea fx:id="arrayInputTextArea" promptText="Contoh: 5,3,8,1,9" prefHeight="60" wrapText="true" style="-fx-font-size: 10px;"/>
+            
+            <Button fx:id="startButton" onAction="#handleStartButton" text="▶️ MULAI SIMULASI" style="-fx-font-size: 12px; -fx-padding: 8px; -fx-background-color: #27ae60; -fx-text-fill: white;"/>
+            
+            <Separator/>
+            
+            <Label text="Kontrol Simulasi" style="-fx-font-size: 12px; -fx-font-weight: bold;"/>
+            <Button fx:id="nextStepButton" onAction="#handleNextStepButton" text="⏭️ LANGKAH BERIKUTNYA" style="-fx-font-size: 12px; -fx-padding: 8px; -fx-background-color: #3498db; -fx-text-fill: white;"/>
+            <Button fx:id="resetButton" onAction="#handleResetButton" text="🔄 RESET" style="-fx-font-size: 12px; -fx-padding: 8px; -fx-background-color: #95a5a6; -fx-text-fill: white;"/>
+            
+            <Separator/>
+            
+            <Label text="Pilih Warna Batang" style="-fx-font-size: 12px; -fx-font-weight: bold;"/>
+            <ComboBox fx:id="skinComboBox" style="-fx-font-size: 11px;" prefWidth="200"/>
+            <Button fx:id="applySkinButton" onAction="#handleApplySkinButton" text="✓ TERAPKAN SKIN" style="-fx-font-size: 11px; -fx-padding: 6px; -fx-background-color: #9b59b6; -fx-text-fill: white;"/>
+            
+            <Label fx:id="stepCounterLabel" text="Step: 0" style="-fx-font-size: 11px; -fx-text-fill: #7f8c8d; -fx-padding: 10px 0 0 0;"/>
+        </VBox>
+        
+        <!-- Middle Panel - Chart -->
+        <VBox spacing="10.0" style="-fx-padding: 10px; -fx-background-color: white; -fx-border-color: #bdc3c7; -fx-border-radius: 5;" HBox.hgrow="ALWAYS">
+            <Label text="📊 Visualisasi Grafik Batang" style="-fx-font-size: 12px; -fx-font-weight: bold;"/>
+            <HBox fx:id="chartContainer" style="-fx-padding: 20px; -fx-background-color: #f8f9fa; -fx-border-color: #e9ecef; -fx-border-radius: 5;" VBox.vgrow="ALWAYS" minHeight="300"/>
+        </VBox>
+        
+    </HBox>
+    
+    <!-- Bottom Panel - Explanation -->
+    <VBox spacing="5.0" style="-fx-padding: 10px; -fx-background-color: white; -fx-border-color: #bdc3c7; -fx-border-radius: 5;" prefHeight="150">
+        <Label text="💬 Penjelasan Langkah" style="-fx-font-size: 12px; -fx-font-weight: bold;"/>
+        <TextArea fx:id="explanationTextArea" wrapText="true" editable="false" style="-fx-font-size: 11px;" VBox.vgrow="ALWAYS"/>
+    </VBox>
+    
+</VBox>

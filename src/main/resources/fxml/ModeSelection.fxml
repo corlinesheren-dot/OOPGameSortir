@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.geometry.Insets?>
+
+<VBox prefHeight="800.0" prefWidth="1200.0" spacing="20.0" style="-fx-padding: 20px; -fx-background-color: #ecf0f1;" xmlns:fx="http://javafx.com/fxml" fx:controller="com.gamesortir.ui.controller.ModeSelectionController">
+    
+    <!-- Header dengan tombol Back -->
+    <HBox spacing="20.0" style="-fx-alignment: center-left;">
+        <Button fx:id="backButton" onAction="#handleBackClick" text="← KEMBALI" style="-fx-font-size: 12px; -fx-padding: 8px 15px; -fx-background-color: #95a5a6; -fx-text-fill: white;"/>
+        <Label text="Pilih Mode Permainan" style="-fx-font-size: 24px; -fx-font-weight: bold; -fx-text-fill: #2c3e50;"/>
+        <Region HBox.hgrow="ALWAYS"/>
+    </HBox>
+    
+    <!-- Mode Selection Grid -->
+    <GridPane spacing="20.0" style="-fx-padding: 20px;" VBox.vgrow="ALWAYS">
+        <columnConstraints>
+            <ColumnConstraints percentWidth="25"/>
+            <ColumnConstraints percentWidth="25"/>
+            <ColumnConstraints percentWidth="25"/>
+            <ColumnConstraints percentWidth="25"/>
+        </columnConstraints>
+        <rowConstraints>
+            <RowConstraints percentHeight="50"/>
+            <RowConstraints percentHeight="50"/>
+        </rowConstraints>
+        
+        <!-- Learn Mode Button -->
+        <VBox spacing="15.0" style="-fx-border-color: #3498db; -fx-border-radius: 10; -fx-padding: 20px; -fx-background-color: white; -fx-alignment: center;" GridPane.columnIndex="0" GridPane.rowIndex="0">
+            <Label text="📚" style="-fx-font-size: 48px;"/>
+            <Label text="Mode Belajar (Simulasi)" style="-fx-font-size: 14px; -fx-font-weight: bold; -fx-text-alignment: center;"/>
+            <Label text="Lihat step-by-step proses sorting" style="-fx-font-size: 11px; -fx-text-fill: #7f8c8d; -fx-text-alignment: center; -fx-wrap-text: true;"/>
+            <Button fx:id="learnModeButton" onAction="#handleLearnModeClick" text="MULAI" style="-fx-font-size: 12px; -fx-padding: 10px 30px; -fx-background-color: #3498db; -fx-text-fill: white; -fx-cursor: hand;"/>
+        </VBox>
+        
+        <!-- Game Mode Button -->
+        <VBox spacing="15.0" style="-fx-border-color: #e74c3c; -fx-border-radius: 10; -fx-padding: 20px; -fx-background-color: white; -fx-alignment: center;" GridPane.columnIndex="1" GridPane.rowIndex="0">
+            <Label text="🎮" style="-fx-font-size: 48px;"/>
+            <Label text="Mode Permainan" style="-fx-font-size: 14px; -fx-font-weight: bold; -fx-text-alignment: center;"/>
+            <Label text="Tukar batang secara manual dengan aturan" style="-fx-font-size: 11px; -fx-text-fill: #7f8c8d; -fx-text-alignment: center; -fx-wrap-text: true;"/>
+            <Button fx:id="gameModeButton" onAction="#handleGameModeClick" text="MULAI" style="-fx-font-size: 12px; -fx-padding: 10px 30px; -fx-background-color: #e74c3c; -fx-text-fill: white; -fx-cursor: hand;"/>
+        </VBox>
+        
+        <!-- Shop Button -->
+        <VBox spacing="15.0" style="-fx-border-color: #f39c12; -fx-border-radius: 10; -fx-padding: 20px; -fx-background-color: white; -fx-alignment: center;" GridPane.columnIndex="2" GridPane.rowIndex="0">
+            <Label text="🛍️" style="-fx-font-size: 48px;"/>
+            <Label text="Toko Hadiah" style="-fx-font-size: 14px; -fx-font-weight: bold; -fx-text-alignment: center;"/>
+            <Label text="Beli skin, ramuan, dan item khusus" style="-fx-font-size: 11px; -fx-text-fill: #7f8c8d; -fx-text-alignment: center; -fx-wrap-text: true;"/>
+            <Button fx:id="shopButton" onAction="#handleShopClick" text="BUKA" style="-fx-font-size: 12px; -fx-padding: 10px 30px; -fx-background-color: #f39c12; -fx-text-fill: white; -fx-cursor: hand;"/>
+        </VBox>
+        
+        <!-- Inventory Button -->
+        <VBox spacing="15.0" style="-fx-border-color: #9b59b6; -fx-border-radius: 10; -fx-padding: 20px; -fx-background-color: white; -fx-alignment: center;" GridPane.columnIndex="3" GridPane.rowIndex="0">
+            <Label text="🎒" style="-fx-font-size: 48px;"/>
+            <Label text="Inventory Tas" style="-fx-font-size: 14px; -fx-font-weight: bold; -fx-text-alignment: center;"/>
+            <Label text="Lihat dan gunakan item yang dimiliki" style="-fx-font-size: 11px; -fx-text-fill: #7f8c8d; -fx-text-alignment: center; -fx-wrap-text: true;"/>
+            <Button fx:id="inventoryButton" onAction="#handleInventoryClick" text="BUKA" style="-fx-font-size: 12px; -fx-padding: 10px 30px; -fx-background-color: #9b59b6; -fx-text-fill: white; -fx-cursor: hand;"/>
+        </VBox>
+        
+    </GridPane>
+    
+</VBox>

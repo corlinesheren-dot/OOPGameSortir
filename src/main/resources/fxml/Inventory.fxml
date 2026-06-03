@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.*?>
+
+<VBox prefHeight="800.0" prefWidth="1200.0" spacing="10.0" style="-fx-padding: 15px; -fx-background-color: #ecf0f1;" xmlns:fx="http://javafx.com/fxml" fx:controller="com.gamesortir.ui.controller.InventoryController">
+    
+    <!-- Header -->
+    <HBox spacing="15.0" style="-fx-padding: 10px; -fx-background-color: white; -fx-border-color: #bdc3c7; -fx-border-radius: 5;">
+        <Button fx:id="backButton" onAction="#handleBackButton" text="← KEMBALI" style="-fx-font-size: 11px; -fx-padding: 8px 15px; -fx-background-color: #95a5a6; -fx-text-fill: white;"/>
+        <Label text="🎒 INVENTORY TAS" style="-fx-font-size: 18px; -fx-font-weight: bold; -fx-text-fill: #2c3e50;"/>
+        <Region HBox.hgrow="ALWAYS"/>
+        <Label fx:id="playerNameLabel" text="Pemain: Unknown" style="-fx-font-size: 12px;"/>
+        <Label fx:id="scoreLabel" text="Skor: 0" style="-fx-font-size: 12px; -fx-padding: 5px 10px; -fx-background-color: #27ae60; -fx-text-fill: white; -fx-border-radius: 5;"/>
+    </HBox>
+    
+    <!-- Items Container -->
+    <ScrollPane style="-fx-padding: 0;" VBox.vgrow="ALWAYS">
+        <VBox fx:id="inventoryItemsContainer" spacing="5.0" style="-fx-padding: 10px;"/>
+    </ScrollPane>
+    
+</VBox>

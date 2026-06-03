@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.geometry.Insets?>
+
+<VBox prefHeight="800.0" prefWidth="1200.0" spacing="20.0" style="-fx-padding: 20px; -fx-background-color: #ecf0f1;" xmlns:fx="http://javafx.com/fxml" fx:controller="com.gamesortir.ui.controller.MainMenuController">
+    
+    <!-- Header -->
+    <VBox spacing="10.0" style="-fx-alignment: center; -fx-padding: 30px;">
+        <Label text="🎮 GAMESORTIR" style="-fx-font-size: 48px; -fx-font-weight: bold; -fx-text-fill: #2c3e50;"/>
+        <Label text="Simulasi Interaktif &amp; Game Pengurutan Struktur Data" style="-fx-font-size: 16px; -fx-text-fill: #7f8c8d;"/>
+    </VBox>
+    
+    <!-- Main Content -->
+    <VBox spacing="20.0" style="-fx-alignment: center; -fx-padding: 30px; -fx-border-color: #bdc3c7; -fx-border-radius: 10; -fx-background-color: white;" VBox.vgrow="ALWAYS">
+        
+        <!-- Nama Pemain -->
+        <VBox spacing="10.0">
+            <Label text="Nama Pemain:" style="-fx-font-size: 14px; -fx-font-weight: bold;"/>
+            <TextField fx:id="playerNameField" promptText="Masukkan nama pemain Anda..." style="-fx-font-size: 14px; -fx-padding: 10px;"/>
+        </VBox>
+        
+        <!-- Play Button -->
+        <Button fx:id="playButton" onAction="#handlePlayButtonClick" text="▶️ MULAI BERMAIN" style="-fx-font-size: 16px; -fx-padding: 15px 50px; -fx-background-color: #27ae60; -fx-text-fill: white; -fx-cursor: hand;" minWidth="300"/>
+        
+        <!-- Info -->
+        <Label text="Atau login sebagai pemain yang sudah ada" style="-fx-font-size: 12px; -fx-text-fill: #7f8c8d;"/>
+        
+    </VBox>
+    
+    <!-- Footer -->
+    <Label text="Buatan: Senior Java Developer | Tugas Akhir Struktur Data" style="-fx-font-size: 10px; -fx-text-fill: #95a5a6; -fx-alignment: center;"/>
+    
+</VBox>
