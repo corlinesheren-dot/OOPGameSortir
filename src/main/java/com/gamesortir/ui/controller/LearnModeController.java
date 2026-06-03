@@ -90,6 +90,7 @@ public class LearnModeController {
         if (input.isEmpty()) {
             // Generate random array jika input kosong
             generateRandomArray();
+            input = arrayInputTextArea.getText().trim();
         }
         
         try {
@@ -165,7 +166,8 @@ public class LearnModeController {
             currentArray.add(val);
         }
         
-        // Highlight comparing/swapping indices
+        // Redraw chart with the latest array state, then highlight comparing/swapping indices.
+        drawChart();
         updateChart(step.getComparingIndex1(), step.getComparingIndex2(), step.isSwapped());
         
         // Update explanation
@@ -186,7 +188,9 @@ public class LearnModeController {
      */
     @FXML
     private void handleResetButton() {
-        currentArray.clear();
+        if (currentArray != null) {
+            currentArray.clear();
+        }
         barRectangles.clear();
         chartContainer.getChildren().clear();
         arrayInputTextArea.clear();

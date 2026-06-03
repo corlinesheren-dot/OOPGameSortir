@@ -8,6 +8,7 @@ import com.gamesortir.model.InventoryItem;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -156,14 +157,23 @@ public class GameFacade {
      * @return true jika penukaran valid, false jika invalid
      */
     public boolean validateSwap(int index1, int index2, int[] currentArray) {
-        if (currentAlgorithm == null) {
+        if (currentAlgorithm == null || currentSteps == null || currentArray == null) {
             return false;
         }
-        
-        SortStep expectedStep = getStepAt(currentStepIndex);
-        if (expectedStep == null) {
+
+        if (index1 == index2 ||
+            index1 < 0 || index2 < 0 ||
+            index1 >= currentArray.length || index2 >= currentArray.length) {
             return false;
         }
+
+        int expectedStepIndex = findNextSwapStepIndex(currentStepIndex);
+        if (expectedStepIndex == -1) {
+            logger.warn("Tidak ada penukaran berikutnya yang diperlukan");
+            return false;
+        }
+
+        SortStep expectedStep = currentSteps.get(expectedStepIndex);
         
         // Untuk Bubble Sort: hanya boleh tukar elemen bertetangga
         if (currentAlgorithm.getAlgorithmName().equals("Bubble Sort")) {
@@ -174,14 +184,42 @@ public class GameFacade {
         }
         
         // Cek apakah penukaran sesuai dengan langkah yang diharapkan
-        if (expectedStep.getComparingIndex1() == index1 && expectedStep.getComparingIndex2() == index2 ||
-            expectedStep.getComparingIndex1() == index2 && expectedStep.getComparingIndex2() == index1) {
-            logger.info("Penukaran valid!");
-            return true;
+        boolean matchesExpectedIndices =
+            (expectedStep.getComparingIndex1() == index1 && expectedStep.getComparingIndex2() == index2) ||
+            (expectedStep.getComparingIndex1() == index2 && expectedStep.getComparingIndex2() == index1);
+
+        if (!matchesExpectedIndices) {
+            logger.warn("Penukaran tidak sesuai dengan langkah yang diharapkan");
+            return false;
         }
-        
-        logger.warn("Penukaran tidak sesuai dengan langkah yang diharapkan");
-        return false;
+
+        int[] arrayAfterSwap = currentArray.clone();
+        int temp = arrayAfterSwap[index1];
+        arrayAfterSwap[index1] = arrayAfterSwap[index2];
+        arrayAfterSwap[index2] = temp;
+
+        if (!Arrays.equals(arrayAfterSwap, expectedStep.getCurrentArray())) {
+            logger.warn("Penukaran tidak menghasilkan state array yang diharapkan");
+            return false;
+        }
+
+        currentStepIndex = expectedStepIndex + 1;
+        logger.info("Penukaran valid!");
+        return true;
+    }
+
+    private int findNextSwapStepIndex(int startIndex) {
+        if (currentSteps == null) {
+            return -1;
+        }
+
+        for (int i = startIndex; i < currentSteps.size(); i++) {
+            if (currentSteps.get(i).isSwapped()) {
+                return i;
+            }
+        }
+
+        return -1;
     }
     
     // ===== SCORING & GAMIFICATION =====

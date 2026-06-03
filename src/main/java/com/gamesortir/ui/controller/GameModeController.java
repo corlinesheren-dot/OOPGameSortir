@@ -179,7 +179,7 @@ public class GameModeController {
             int idx2 = barIndex;
             
             // Validate swap
-            if (gameFacade.validateSwap(idx1, idx2, originalArray)) {
+            if (gameFacade.validateSwap(idx1, idx2, toIntArray(currentArray))) {
                 // Valid swap
                 swap(currentArray, idx1, idx2);
                 drawChart();
@@ -246,7 +246,9 @@ public class GameModeController {
      */
     @FXML
     private void handleResetButton() {
-        currentArray.clear();
+        if (currentArray != null) {
+            currentArray.clear();
+        }
         barRectangles.clear();
         chartContainer.getChildren().clear();
         arrayInputTextArea.clear();
@@ -327,6 +329,14 @@ public class GameModeController {
         Integer temp = array.get(i);
         array.set(i, array.get(j));
         array.set(j, temp);
+    }
+
+    private int[] toIntArray(List<Integer> values) {
+        int[] array = new int[values.size()];
+        for (int i = 0; i < values.size(); i++) {
+            array[i] = values.get(i);
+        }
+        return array;
     }
     
     /**
